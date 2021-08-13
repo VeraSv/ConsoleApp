@@ -17,8 +17,6 @@ namespace ConsoleApp
                     Console.Write("Enter the number: ");
                 }
 
-
-
                 Console.Write("Enter the number of columns: ");
                 while (!int.TryParse(Console.ReadLine(), out columns))
                 {
