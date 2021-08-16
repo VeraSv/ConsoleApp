@@ -6,7 +6,6 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-
             try
             {
                 int rows;
@@ -26,30 +25,48 @@ namespace ConsoleApp
                 }
                 if ((rows <= 0) | (rows > 30) | (columns <= 0) | (columns > 30))
                 {
-                    Console.Write("wrong range");
+                    Console.Write("Wrong range");
                 }
-                Console.Write("Enter the direction: ");
-                direct = Console.ReadLine();
-                string[,] mas = new string[rows, columns];
-                string str = "*";
-                for (int i = 0; i < rows; i++)
+                else
                 {
-                    for (int j = 0; j < columns; j++)
+                    Console.Write("Enter the direction: ");
+                    direct = Console.ReadLine();
+                    if ((direct == "l") ^ (direct == "r"))
                     {
+                        string[,] mas = new string[rows, columns];
+                        string str = "*";
                         Random rnd = new Random();
-                        if (((direct == "l") & (i == j)) | ((direct == "r") & (j == columns - i - 1)))
+                        for (int i = 0; i < rows; i++)
                         {
-                            mas[i, j] = str;
 
-                        }
-                        else
-                        {
-                            mas[i, j] = rnd.Next(10, 99).ToString();
+                            for (int j = 0; j < columns; j++)
+                            {
 
+                                if (((direct == "l") & (i == j)) | ((direct == "r") & (j == columns - i - 1)))
+                                {
+                                    mas[i, j] = str;
+
+                                }
+                                else
+                                {
+
+                                    mas[i, j] = rnd.Next(10, 99).ToString();
+
+                                }
+                                Console.Write($"{mas[i, j]}\t");
+                            }
+                            Console.WriteLine();
                         }
-                        Console.Write($"{mas[i, j]}\t");
+
                     }
-                    Console.WriteLine();
+                    else
+                    {
+                        Console.Write("Wrong symbol!");
+
+
+
+                    }
+
                 }
             }
 
