@@ -6,10 +6,12 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
+
             try
             {
                 int rows;
                 int columns;
+                string direct;
 
                 Console.Write("Enter the number of rows: ");
                 while (!int.TryParse(Console.ReadLine(), out rows))
@@ -26,14 +28,25 @@ namespace ConsoleApp
                 {
                     Console.Write("wrong range");
                 }
-                int[,] mas = new int[rows, columns];
+                Console.Write("Enter the direction: ");
+                direct = Console.ReadLine();
+                string[,] mas = new string[rows, columns];
+                string str = "*";
                 for (int i = 0; i < rows; i++)
                 {
                     for (int j = 0; j < columns; j++)
                     {
                         Random rnd = new Random();
+                        if (((direct == "l") & (i == j)) | ((direct == "r") & (j == columns - i - 1)))
+                        {
+                            mas[i, j] = str;
 
-                        mas[i, j] = rnd.Next(10, 99);
+                        }
+                        else
+                        {
+                            mas[i, j] = rnd.Next(10, 99).ToString();
+
+                        }
                         Console.Write($"{mas[i, j]}\t");
                     }
                     Console.WriteLine();
